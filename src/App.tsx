@@ -10,10 +10,15 @@ export interface IPokemonAPI {
 function App() {
   const [pokemon, setPokemon] = useState<IPokemonAPI[]>([])
 
+  const loadData = async () => {
+    const response = await fetch(`${process.env.REACT_APP_API}`)
+    const dataPokemon = await response.json()
+
+    return setPokemon(dataPokemon.results)
+  }
+
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API}`)
-      .then((response) => response.json())
-      .then((data) => setPokemon(data.results));
+    loadData()
   }, [])
 
   return (
