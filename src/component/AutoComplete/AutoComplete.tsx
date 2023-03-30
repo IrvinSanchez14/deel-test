@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { List } from "../List/List";
 import { IPokemonAPI } from "../../App";
 import './style.css'
-import { List } from "../List/List";
+
 
 interface IAutoCompleteProps {
   options: IPokemonAPI[]
